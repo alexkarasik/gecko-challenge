@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:show]
 
   # GET /customers
   # GET /customers.json
@@ -24,8 +24,8 @@ class CustomersController < ApplicationController
   end
 
   # GET /customers/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /customers
   # POST /customers.json
@@ -46,27 +46,27 @@ class CustomersController < ApplicationController
 
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
-  def update
-    respond_to do |format|
-      if @customer.update(customer_params)
-        format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @customer }
-      else
-        format.html { render :edit }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @customer.update(customer_params)
+  #       format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @customer }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @customer.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /customers/1
   # DELETE /customers/1.json
-  def destroy
-    @customer.destroy
-    respond_to do |format|
-      format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @customer.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   def import
     Customer.import(params[:file])
