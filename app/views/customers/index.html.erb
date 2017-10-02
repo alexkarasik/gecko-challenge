@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Customers</h1>
+
+<div class="media">
+  <div class="media-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Object</th>
+          <th>Object type</th>
+          <th>Object Timestamp</th>
+          <th>Object changes</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.object_id %></td>
+            <td><%= customer.object_type %></td>
+            <td><%= customer.object_timestamp %></td>
+            <td><%= customer.object_changes %></td>
+            <td><%= link_to 'Show', customer %></td>
+            <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+            <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<br>
+
+<h3>Import Customers</h3>
+<%= form_tag import_customers_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload Customers", class: 'btn btn-default' %>
+
+<% end %>
+
+<h3>Look up a Customer:</h3>
+
+<%= form_tag("", method: "post") do %>
+<!-- <%= label_tag(:q, "Search for:") %> -->
+<h3>Object ID:</h3>
+<%= text_field_tag(:object_id) %>
+<h3>Object Timestamp:</h3>
+<%= text_field_tag(:timestamp) %>
+<%= submit_tag("Search") %>
+<%= @customer_changes %>
+<% end %>
+
+
+<%= link_to 'New Customer', new_customer_path %>

@@ -1,0 +1,7 @@
+{
+  "name": "csv-challenge",
+  "private": true,
+  "dependencies": {
+    "convert-csv-to-json": "0.0.11"
+  }
+}
